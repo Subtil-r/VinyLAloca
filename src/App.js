@@ -25,9 +25,10 @@ function App() {
    async function getData(){
     //https://ceren-app.herokuapp.com/predict
     //https://cors-anywhere.herokuapp.com/https://vinylaloca.herokuapp.com/api/product
-    await axios("https://ceren-app.herokuapp.com/predict")
+    //https://cors-anywhere.herokuapp.com/https://vinylalocamusic.herokuapp.com/api/product
+    await axios("https://cors-anywhere.herokuapp.com/https://vinylalocamusic.herokuapp.com/api/product")
     .then((res)=>{
-      setData(res.data);
+      setData(res);
       
       //console.log(res.data["Property Subtype"].default[3]);
     })
@@ -43,10 +44,6 @@ function App() {
   if(loading) return <Loading />;
   if(error) return "Error!";
 
-
-
-  
-  
   return (
     <BrowserRouter>
       <div className="app relative">
@@ -56,14 +53,16 @@ function App() {
           </MenuProvider>
         </header>
         <Switch>
-          <Route path='/' component={Home} exact/>
+          <Route path='/' exact>
+            <Home data={data} />
+          </Route>
           <Route path='/login' component={Login}/>
           <Route path='/profile' component={Profile}/>
           <Route path='/product' component={Product}/>
           <Route path='/cart' component={Cart}/>
           <Route path='/contact' component={Contact}/>
         </Switch>
-       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */} 
+         {/* <pre>{JSON.stringify(data, null, 2)}</pre>  */}
       </div>
     </BrowserRouter>
   );
