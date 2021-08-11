@@ -25,7 +25,7 @@ function App() {
    async function getData(){
     //https://ceren-app.herokuapp.com/predict
     //https://cors-anywhere.herokuapp.com/https://vinylaloca.herokuapp.com/api/product
-    await axios("https://cors-anywhere.herokuapp.com/https://vinylaloca.herokuapp.com/api/product")
+    await axios("https://ceren-app.herokuapp.com/predict")
     .then((res)=>{
       setData(res.data);
       
