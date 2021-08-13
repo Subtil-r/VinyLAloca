@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { PlusCircleIcon } from '@heroicons/react/outline'
 import AddForm from './AddForm';
+import { v4 } from 'uuid';
 
 export default function Address() {
   
@@ -16,7 +17,7 @@ export default function Address() {
   }, [addInsert]) */
 
 const addForm = () => {
-  setAddInsert(addInsert.concat(<AddForm keyForm={addInsert.lenght} />))
+  setAddInsert(addInsert.concat(<AddForm keyForm={v4()} />))
 };
 
 

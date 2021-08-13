@@ -2,9 +2,9 @@ import React from 'react'
 import { MinusCircleIcon, CheckCircleIcon } from '@heroicons/react/outline'
 
 
-export default function AddForm({keyForm}) {
+export default function AddForm(keyForm) {
   return (
-    <div>
+    <>
       <form key={keyForm} id={keyForm} className="my-10 p-5 grid grid-cols-6 gap-6 items-center col-span-full rounded-md shadow-md">
           
           <label htmlFor="country" className="text-vinylpurple uppercase leading-4 text-xs">country</label>
@@ -37,6 +37,6 @@ export default function AddForm({keyForm}) {
           
           
         </form>
-    </div>
+    </>
   )
 }
