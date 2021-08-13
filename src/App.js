@@ -15,22 +15,39 @@ import Product from './pages/Product';
 
 function App() {
   const [data, setData] = useState(null);
+  const [dataTag, setDataTag] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
    useEffect(()=>{
     getData()
+    getDataTag()
   }, []); 
 
    async function getData(){
-    //https://ceren-app.herokuapp.com/predict
-    //https://cors-anywhere.herokuapp.com/https://vinylaloca.herokuapp.com/api/product
-    //https://cors-anywhere.herokuapp.com/https://vinylalocamusic.herokuapp.com/api/product
-    await axios("https://cors-anywhere.herokuapp.com/https://vinylalocamusic.herokuapp.com/api/product")
+    
+    await axios("https://vinylalocamusic.herokuapp.com/api/products")
     .then((res)=>{
       setData(res);
       
-      //console.log(res.data["Property Subtype"].default[3]);
+     //console.log(res.data.['hydra:member'][0].name);
+    })
+    .catch((error)=>{
+      console.error("Error fetching data: ", error);
+      setError(error);
+    })
+    .finally(()=>{
+      setLoading(false);
+    });
+  }; 
+
+   async function getDataTag(){
+    
+    await axios("https://vinylalocamusic.herokuapp.com/api/tags")
+    .then((res)=>{
+      setDataTag(res);
+      
+     //console.log(res.data.['hydra:member'][0].name);
     })
     .catch((error)=>{
       console.error("Error fetching data: ", error);
@@ -54,7 +71,7 @@ function App() {
         </header>
         <Switch>
           <Route path='/' exact>
-            <Home data={data} />
+            <Home data={data} tag={dataTag}/>
           </Route>
           <Route path='/login' component={Login}/>
           <Route path='/profile' component={Profile}/>
@@ -62,7 +79,7 @@ function App() {
           <Route path='/cart' component={Cart}/>
           <Route path='/contact' component={Contact}/>
         </Switch>
-         {/* <pre>{JSON.stringify(data, null, 2)}</pre>  */}
+           {/* <pre>{JSON.stringify(data, null, 2)}</pre> */} 
       </div>
     </BrowserRouter>
   );
