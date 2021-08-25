@@ -1,4 +1,5 @@
 import React from 'react'
+import Address from '../components/Address';
 
 export default function Profile() {
   return (
@@ -18,25 +19,13 @@ export default function Profile() {
           {/* <label htmlFor="confirmPass" className="text-vinylpurple uppercase leading-4 text-xs">confirm password</label>
           <input type="password" id="confirmPass" className="border-b-2 border-vinylpurple text-vinylyellow h-10 col-span-4 p-4" placeholder="******" /> */}
           
-          <label htmlFor="country" className="text-vinylpurple uppercase leading-4 text-xs">country</label>
-          <input type="text" id="country" className="focus:outline-none border-b-2 border-vinylpurple text-vinylyellow h-10 col-span-4 p-4" placeholder="country" />
-          
-          <label htmlFor="city" className="text-vinylpurple uppercase leading-4 text-xs">city</label>
-          <input type="text" id="city" className="focus:outline-none border-b-2 border-vinylpurple text-vinylyellow h-10 col-span-4 p-4" placeholder="city" />
-          
-          <label htmlFor="address" className="text-vinylpurple uppercase leading-4 text-xs">address</label>
-          <input type="text" id="address" className="focus:outline-none border-b-2 border-vinylpurple text-vinylyellow h-10 col-span-4 p-4" placeholder="address" />
-          
-          <label htmlFor="number" className="text-vinylpurple uppercase leading-4 text-xs">number</label>
-          <input type="number" id="number" className="focus:outline-none border-b-2 border-vinylpurple text-vinylyellow h-10 col-span-4 p-4" placeholder="00" />
-          
-          <label htmlFor="zipCode" className="text-vinylpurple uppercase leading-4 text-xs">zip code</label>
-          <input type="number" id="zipCode" className="focus:outline-none border-b-2 border-vinylpurple text-vinylyellow h-10 col-span-4 p-4" placeholder="0000" />
-          
-          
-          <input type="submit" id="submit" className="tag-container bg-vinylyellow px-7 py-1 col-span-full font-semibold text-white text-lg uppercase mt-8" value="checkout" />
           
         </form>
+          <Address/>
+          <div className="mx-5 my-10 grid grid-cols-5 gap-5 items-center">
+          <input type="submit" id="submit" className="tag-container bg-vinylyellow px-7 py-1 col-span-full font-semibold text-white text-lg uppercase mt-8" value="checkout" />
+          </div>
+          
       </div>
   )
 }

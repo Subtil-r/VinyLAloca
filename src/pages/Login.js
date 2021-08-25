@@ -25,7 +25,7 @@ export default function Login() {
     axios({
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
-      url: "", 
+      url: "http://localhost:3000/login", //placeholder for api
       data: data
     })
       .then((res) => console.log("My response: ", res))
@@ -35,19 +35,18 @@ export default function Login() {
   };
 
   const [regState, setRegState] = useState({
-    full_name: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
     cpassword: "",
-    country: "",
-    city: "",
-    address: "",
-    number: "",
-    postal: "",
   });
 
   const onFNameChange = (e) => {
-    setRegState({ ...regState, full_name: e.target.value });
+    setRegState({ ...regState, firstname: e.target.value });
+  };
+  const onLNameChange = (e) => {
+    setRegState({ ...regState, lastname: e.target.value });
   };
   const onEmailRegChange = (e) => {
     setRegState({ ...regState, email: e.target.value });
@@ -58,21 +57,7 @@ export default function Login() {
   const onCPasswordChange = (e) => {
     setRegState({ ...regState, cpassword: e.target.value });
   };
-  const onCountryChange = (e) => {
-    setRegState({ ...regState, country: e.target.value });
-  };
-  const onCityChange = (e) => {
-    setRegState({ ...regState, city: e.target.value });
-  };
-  const onAddressChange = (e) => {
-    setRegState({ ...regState, address: e.target.value });
-  };
-  const onNumberChange = (e) => {
-    setRegState({ ...regState, number: e.target.value });
-  };
-  const onPostalChange = (e) => {
-    setRegState({ ...regState, postal: e.target.value });
-  };
+  
   
   const checkPass = (e) => {
     if (regState.password !== regState.cpassword){
@@ -83,14 +68,10 @@ export default function Login() {
   const handleReg = (e) => {
     e.preventDefault();
     const data = {
-      full_name: regState.full_name,
+      firstname: regState.firstname,
+      lastname: regState.lastname,
       email: regState.email,
       password: regState.password,
-      country: regState.country,
-      city: regState.city,
-      address: regState.address,
-      number: regState.number,
-      postal: regState.postal,
     };
     console.log("My form data: ", data);
     if (regState.password !== regState.cpassword){
@@ -99,7 +80,7 @@ export default function Login() {
       axios({
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
-        url: "", 
+        url: "https://vinylalocamusic.herokuapp.com/api/users", //placeholder for api
         data: data
       })
         .then((res) => console.log("My response: ", res))
@@ -152,14 +133,24 @@ export default function Login() {
         <h1 className="text-center text-3xl font-semibold text-vinylpurple my-5">No account ?</h1>
         <form className="mx-5 my-10 grid grid-cols-5 gap-5 items-center" onClick={checkPass}>
           
-          <label htmlFor="fullName" className="text-vinylpurple uppercase leading-4 text-xs">full name</label>
+          <label htmlFor="fistName" className="text-vinylpurple uppercase leading-4 text-xs">first name</label>
           <input 
           type="text" 
-          id="fullName" 
+          id="firstName" 
           className="border-2 border-vinylyellow h-10 col-span-4 p-4"
-          value={regState.full_name}
+          value={regState.firstname}
           onChange={onFNameChange} 
-          placeholder="full name" 
+          placeholder="first name" 
+          />
+
+          <label htmlFor="lastName" className="text-vinylpurple uppercase leading-4 text-xs">last name</label>
+          <input 
+          type="text" 
+          id="lastName" 
+          className="border-2 border-vinylyellow h-10 col-span-4 p-4"
+          value={regState.lastname}
+          onChange={onLNameChange} 
+          placeholder="last name" 
           />
           
           <label htmlFor="emailAdReg" className="text-vinylpurple uppercase leading-4 text-xs">email address</label>
@@ -192,55 +183,7 @@ export default function Login() {
           placeholder="******" 
           />
           
-          <label htmlFor="country" className="text-vinylpurple uppercase leading-4 text-xs">country</label>
-          <input 
-          type="text" 
-          id="country" 
-          className="border-2 border-vinylyellow h-10 col-span-4 p-4" 
-          value={regState.country}
-          onChange={onCountryChange}
-          placeholder="country" 
-          />
           
-          <label htmlFor="city" className="text-vinylpurple uppercase leading-4 text-xs">city</label>
-          <input 
-          type="text" 
-          id="city" 
-          className="border-2 border-vinylyellow h-10 col-span-4 p-4"
-          value={regState.city}
-          onChange={onCityChange} 
-          placeholder="city" 
-          />
-          
-          <label htmlFor="address" className="text-vinylpurple uppercase leading-4 text-xs">address</label>
-          <input 
-          type="text" 
-          id="address" 
-          className="border-2 border-vinylyellow h-10 col-span-4 p-4"
-          value={regState.address}
-          onChange={onAddressChange} 
-          placeholder="address" 
-          />
-          
-          <label htmlFor="number" className="text-vinylpurple uppercase leading-4 text-xs">number</label>
-          <input 
-          type="number" 
-          id="number" 
-          className="border-2 border-vinylyellow h-10 col-span-4 p-4"
-          value={regState.number}
-          onChange={onNumberChange} 
-          placeholder="00" 
-          />
-          
-          <label htmlFor="zipCode" className="text-vinylpurple uppercase leading-4 text-xs">zip code</label>
-          <input 
-          type="number" 
-          id="zipCode" 
-          className="border-2 border-vinylyellow h-10 col-span-4 p-4" 
-          value={regState.postal}
-          onChange={onPostalChange}
-          placeholder="0000" 
-          />
           
           
           <input type="submit" id="submitReg" className="tag-container bg-vinylyellow px-7 w-max py-1 col-span-2 col-start-2 font-semibold text-white text-lg uppercase" value="register" onClick={handleReg} />
