@@ -9,6 +9,8 @@ export default function Login({checkAuth}) {
   const history = useHistory();
 
   const [redirect, setRedirect] = useState(false);
+
+  //const [userId, setUserId] = useState('');
   
   const [loginState, setLoginState] = useState({
     email: "",
@@ -39,22 +41,33 @@ export default function Login({checkAuth}) {
       setRedirect(false);
     } else {
 
-      /*  axios({
+       axios({
          method: 'post',
          headers: { 'Content-Type': 'application/json' },
          //credentials: 'include',
          withCredentials: true,
-         url: "http://localhost:3000/login", //placeholder for api
+         url: "https://cors-anywhere.herokuapp.com/https://vinylalocamusic.herokuapp.com/api/login", //placeholder for api
          data: data
        })
-         .then((res) => console.log("My response: ", res))
-         .catch((err) => console.log(err)); */
+         .then((res) => {
+           console.log("My response from login: ", res)
+
+           /* setUserId(res.data.id); 
+            
+           setRedirect(true); 
+           
+           checkAuth(true);
+           
+           history.push('/profile') */
+          })
+         .catch((err) => console.log(err));
+
+         setRedirect(true); 
+           
+         checkAuth(true);
+           
+         history.push('/profile')
          
-          setRedirect(true); 
-          
-          checkAuth(true);
-          
-          history.push('/profile')
     }
   };
 

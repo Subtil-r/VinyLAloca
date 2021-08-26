@@ -23,7 +23,7 @@ export default function Menu() {
         <li className="text-vinylpurple font-bold uppercase text-3xl leading-10 mt-2 tracking-wide" onClick={toggleMenu}>
           <Link to="/contact">contact</Link>
         </li>
-      </ul>
+      </ul> 
     </div>
   )
 }
