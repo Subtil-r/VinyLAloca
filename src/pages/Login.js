@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import RegisterForm from '../components/RegisterForm';
 import axios from 'axios';
 import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import auth from '../auth';
+
 
 export default function Login({checkAuth}) {
 
@@ -51,10 +51,10 @@ export default function Login({checkAuth}) {
          .catch((err) => console.log(err)); */
          
           setRedirect(true); 
-          auth.login(()=>{
-           history.push('/profile')
-         }) 
-         checkAuth(true);
+          
+          checkAuth(true);
+          
+          history.push('/profile')
     }
   };
 
