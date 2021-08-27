@@ -15,7 +15,7 @@ import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   const [data, setData] = useState(null);
-  const [dataTag, setDataTag] = useState(null);
+  //const [dataTag, setDataTag] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isAuth, setIsAuth] = useState(false);
@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     getData();
-    getDataTag();
+    //getDataTag();
   }, []);
 
 async function getData() {
@@ -43,8 +43,8 @@ async function getData() {
       });
   }
 
-  async function getDataTag() {
-    await axios("https://vinylalocamusic.herokuapp.com/api/tags")
+ /*  async function getDataTag() {
+     axios("https://vinylalocamusic.herokuapp.com/api/tags")
       .then((res) => {
         setDataTag(res);
 
@@ -57,7 +57,7 @@ async function getData() {
       .finally(() => {
         setLoading(false);
       });
-  }
+  } */
 
   if (loading) return <Loading />;
   if (error) return "Error!";
@@ -79,7 +79,7 @@ async function getData() {
         </header>
         <Switch>
           <Route path="/" exact>
-            <Home data={data} tag={dataTag} />
+            <Home data={data} /* tag={dataTag} */ />
           </Route>
           <Route
             path="/login"
@@ -92,7 +92,7 @@ async function getData() {
           <Route path="/cart" component={Cart} />
           <Route path="/contact" component={Contact} />
         </Switch>
-        {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+
       </div>
     </BrowserRouter>
   );

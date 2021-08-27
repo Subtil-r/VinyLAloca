@@ -7,7 +7,7 @@ export default function Home({data, tag}) {
   return (
     <div className="home-container ">
       <ProductHome data={data}/>
-      <TagsCat tag={tag} />
+      <TagsCat /* tag={tag} */ />
     </div>
   )
 }
