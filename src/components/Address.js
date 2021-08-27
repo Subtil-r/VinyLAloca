@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { PlusCircleIcon } from '@heroicons/react/outline'
 import AddForm from './AddForm';
 import { v4 } from 'uuid';
@@ -6,15 +6,6 @@ import { v4 } from 'uuid';
 export default function Address() {
   
   const [addInsert, setAddInsert] = useState([]);
-
-  /* useEffect(() => {
-    const parsedCount = localStorage.getItem("count")
-    setAddInsert(parsedCount)
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem("addInsert", addInsert)
-  }, [addInsert]) */
 
 const addForm = () => {
   setAddInsert(addInsert.concat(<AddForm keyForm={v4()} />))

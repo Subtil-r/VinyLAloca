@@ -18,14 +18,12 @@ function App() {
   const [dataTag, setDataTag] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [getUser, setGetUser] = useState(null);
   const [isAuth, setIsAuth] = useState(false);
   
 
   useEffect(() => {
     getData();
     getDataTag();
-    getUsers();
   }, []);
 
 async function getData() {
@@ -35,14 +33,14 @@ async function getData() {
         setData(res);
         //data = res;
         //console.log(res.data.['hydra:member'][0].name);
-        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching data: ", error);
         setError(error);
       })
-      /* .finally(() => {
-      }); */
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
   async function getDataTag() {
@@ -64,19 +62,6 @@ async function getData() {
   if (loading) return <Loading />;
   if (error) return "Error!";
 
-  async function getUsers() {
-    axios({
-      headers: { "Content-Type": "application/json" },
-      //credentials: 'include',
-      //withCredentials: true,
-      url: "https://vinylalocamusic.herokuapp.com/api/users", //placeholder for api
-    })
-      .then((res) => {
-        console.log("My response: ", res);
-        setGetUser(res);
-      })
-      .catch((err) => console.log(err));
-  }
 
   function checkAuth(value) {
     setIsAuth(value);
@@ -94,7 +79,7 @@ async function getData() {
         </header>
         <Switch>
           <Route path="/" exact>
-            <Home data={data} />
+            <Home data={data} tag={dataTag} />
           </Route>
           <Route
             path="/login"

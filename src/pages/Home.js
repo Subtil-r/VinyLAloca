@@ -3,11 +3,11 @@ import ProductHome from '../components/ProductHome'
 import TagsCat from '../components/TagsCat'
 
 
-export default function Home({data}) {
+export default function Home({data, tag}) {
   return (
     <div className="home-container ">
       <ProductHome data={data}/>
-      <TagsCat />
+      <TagsCat tag={tag} />
     </div>
   )
 }

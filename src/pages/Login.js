@@ -10,7 +10,7 @@ export default function Login({checkAuth}) {
 
   const [redirect, setRedirect] = useState(false);
 
-  //const [userId, setUserId] = useState('');
+  //const [userId, setUserId] = useState(null);
   
   const [loginState, setLoginState] = useState({
     email: "",
