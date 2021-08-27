@@ -12,6 +12,9 @@ import Product from './Components/Product/Product';
 import Menu from './Components/Menu';
 import  ProductsList from "./Components/Product/ProductsList";
 import './styles/product.css';
+// import Login from "./pages/Login";
+// import Profile from "./pages/Profile";
+import ProtectedRoute from "./ProtectedRoute";
 
 
 
@@ -21,6 +24,8 @@ import './styles/product.css';
 
 
 function App() {
+  const [isAuth, setIsAuth] = useState(false);
+  const [error, setError] = useState(null);
 
 
 
@@ -83,6 +88,9 @@ useEffect(()=>{
   }
 
 
+  function checkAuth(value) {
+    setIsAuth(value);
+  }
 
 
   return (
@@ -113,6 +121,11 @@ useEffect(()=>{
         </Route>
         <Route path="/productslist">
           <ProductsList addToCart ={addToCart}  />
+        <Route
+            path="/login"
+            component={() => <Login checkAuth={checkAuth} />}
+          />
+        <ProtectedRoute path="/profile" component={Profile} isAuth={isAuth} />
 
         </Route>
       </Switch>
@@ -124,6 +137,90 @@ useEffect(()=>{
   );
 
 
+
+// function App() {
+//   const [data, setData] = useState(null);
+//   const [dataTag, setDataTag] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+//   const [isAuth, setIsAuth] = useState(false);
+  
+
+//   useEffect(() => {
+//     getData();
+//     getDataTag();
+//   }, []);
+
+// async function getData() {
+//     axios.get("https://vinylalocamusic.herokuapp.com/api/products")
+//       .then((res) => {
+//         console.log(res)
+//         setData(res);
+//         //data = res;
+//         //console.log(res.data.['hydra:member'][0].name);
+//       })
+//       .catch((error) => {
+//         console.error("Error fetching data: ", error);
+//         setError(error);
+//       })
+//       .finally(() => {
+//         setLoading(false);
+//       });
+//   }
+
+//   async function getDataTag() {
+//     await axios("https://vinylalocamusic.herokuapp.com/api/tags")
+//       .then((res) => {
+//         setDataTag(res);
+
+//         //console.log(res.data.['hydra:member'][0].name);
+//       })
+//       .catch((error) => {
+//         console.error("Error fetching data: ", error);
+//         setError(error);
+//       })
+//       .finally(() => {
+//         setLoading(false);
+//       });
+//   }
+
+//   if (loading) return <Loading />;
+//   if (error) return "Error!";
+
+
+//   function checkAuth(value) {
+//     setIsAuth(value);
+//   }
+
+//   console.log("my data: ", data);
+
+//   return (
+//     <BrowserRouter>
+//       <div className="app relative">
+//         <header className="app-header">
+//           <MenuProvider width="375px" MenuComponent={Menu}>
+//             <Header isAuth={isAuth} checkAuth={checkAuth}/>
+//           </MenuProvider>
+//         </header>
+//         <Switch>
+//           <Route path="/" exact>
+//             <Home data={data} tag={dataTag} />
+//           </Route>
+//           <Route
+//             path="/login"
+//             component={() => <Login checkAuth={checkAuth} />}
+//           />
+
+//           <ProtectedRoute path="/profile" component={Profile} isAuth={isAuth} />
+
+//           <Route path="/product" component={Product} />
+//           <Route path="/cart" component={Cart} />
+//           <Route path="/contact" component={Contact} />
+//         </Switch>
+//         {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+//       </div>
+//     </BrowserRouter>
+//   );
 }
 
-export default App;
+export default App
