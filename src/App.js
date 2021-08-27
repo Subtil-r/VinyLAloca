@@ -12,8 +12,8 @@ import Product from './Components/Product/Product';
 import Menu from './Components/Menu';
 import  ProductsList from "./Components/Product/ProductsList";
 import './styles/product.css';
-// import Login from "./pages/Login";
-// import Profile from "./pages/Profile";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 import ProtectedRoute from "./ProtectedRoute";
 
 

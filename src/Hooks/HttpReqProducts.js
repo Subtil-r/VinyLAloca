@@ -14,6 +14,7 @@ export function useAxiosGet(url){
           data:null,
           error : false
         })
+        
         axios.get(url)
         .then(response => {
           console.log(response.data.['hydra:member'])
