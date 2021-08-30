@@ -1,5 +1,5 @@
 //Product.js
-import React from "react";
+import React,{useState} from "react";
 import { AxiosGetSingleProd } from '../../Hooks/HttpSingleProd';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
@@ -12,22 +12,18 @@ import axios from "axios";
 
 
 
-function Product(props) {
+function Product({addToCart}) {
 
 
-
-
-  const {addToCart} = props;
-
-
-  const {id} = useParams()
+const [category,setCategory] = useState ([])
+// const {addToCart} = props;
+const {id} = useParams()
 
 
 
   const url  =`https://vinylalocamusic.herokuapp.com/api/products/${id}`;
 
   let product = AxiosGetSingleProd(url)
-
 
     let content = null;
   if(product.error) {
@@ -42,9 +38,11 @@ function Product(props) {
 
       axios.get(`https://vinylalocamusic.herokuapp.com${product.data.categories}`)
       .then(response => {
-
-        console.log(response.data.name)
-        // let cat = response.data.name
+        setCategory({
+          loading:false,
+          data: response.data.name,
+          error : false
+        })
         
       } 
       )
@@ -65,7 +63,7 @@ function Product(props) {
           <h3  className="flex self-start font-bold text-xl mb-4 ">{product.data.artist}</h3>
           <div className="label-cat mb-8 w-full flex  justify-between">
               <p>{product.data.label}</p>
-              <p>{}</p>
+              <p>{category.data}</p>
           </div>
           <h4 className="self-start font-bold  text-left ">Description</h4>
           <p id="desc" className="font-italic text-left mb-4">{product.data.description}</p>

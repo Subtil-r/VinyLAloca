@@ -17,15 +17,12 @@ import Profile from "./pages/Profile";
 import ProtectedRoute from "./ProtectedRoute";
 
 
-
-
-
-
-
-
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  //const [dataTag, setDataTag] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isAuth, setIsAuth] = useState(false);
+
 
 
 
@@ -99,7 +96,7 @@ useEffect(()=>{
           <MenuProvider width="450px" MenuComponent={Menu} animation="push">
       
     <div className="App">
-      <Header countCartItems={cartItems.length}/>
+      <Header countCartItems={cartItems.length} isAuth={isAuth} checkAuth={checkAuth}/>
     </div>
 
     <div className="content">
@@ -121,106 +118,25 @@ useEffect(()=>{
         </Route>
         <Route path="/productslist">
           <ProductsList addToCart ={addToCart}  />
-        <Route
-            path="/login"
-            component={() => <Login checkAuth={checkAuth} />}
-          />
-        <ProtectedRoute path="/profile" component={Profile} isAuth={isAuth} />
-
         </Route>
-      </Switch>
 
-    </div>
-    </MenuProvider>
-    </Router>
-    </div>
+          <Route path="/login" component={() => 
+          <Login checkAuth={checkAuth} />}>
+               
+            </Route>
+            <ProtectedRoute path="/profile" component={Profile} isAuth={isAuth} />
+        </Switch>
+
+</div>
+</MenuProvider>
+</Router>
+</div>
+
   );
 
 
 
-// function App() {
-//   const [data, setData] = useState(null);
-//   const [dataTag, setDataTag] = useState(null);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const [isAuth, setIsAuth] = useState(false);
-  
 
-//   useEffect(() => {
-//     getData();
-//     getDataTag();
-//   }, []);
-
-// async function getData() {
-//     axios.get("https://vinylalocamusic.herokuapp.com/api/products")
-//       .then((res) => {
-//         console.log(res)
-//         setData(res);
-//         //data = res;
-//         //console.log(res.data.['hydra:member'][0].name);
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching data: ", error);
-//         setError(error);
-//       })
-//       .finally(() => {
-//         setLoading(false);
-//       });
-//   }
-
-//   async function getDataTag() {
-//     await axios("https://vinylalocamusic.herokuapp.com/api/tags")
-//       .then((res) => {
-//         setDataTag(res);
-
-//         //console.log(res.data.['hydra:member'][0].name);
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching data: ", error);
-//         setError(error);
-//       })
-//       .finally(() => {
-//         setLoading(false);
-//       });
-//   }
-
-//   if (loading) return <Loading />;
-//   if (error) return "Error!";
-
-
-//   function checkAuth(value) {
-//     setIsAuth(value);
-//   }
-
-//   console.log("my data: ", data);
-
-//   return (
-//     <BrowserRouter>
-//       <div className="app relative">
-//         <header className="app-header">
-//           <MenuProvider width="375px" MenuComponent={Menu}>
-//             <Header isAuth={isAuth} checkAuth={checkAuth}/>
-//           </MenuProvider>
-//         </header>
-//         <Switch>
-//           <Route path="/" exact>
-//             <Home data={data} tag={dataTag} />
-//           </Route>
-//           <Route
-//             path="/login"
-//             component={() => <Login checkAuth={checkAuth} />}
-//           />
-
-//           <ProtectedRoute path="/profile" component={Profile} isAuth={isAuth} />
-
-//           <Route path="/product" component={Product} />
-//           <Route path="/cart" component={Cart} />
-//           <Route path="/contact" component={Contact} />
-//         </Switch>
-//         {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-//       </div>
-//     </BrowserRouter>
-//   );
 }
 
 export default App
