@@ -98,7 +98,7 @@ useEffect(()=>{
     <div className="App">
       <Header countCartItems={cartItems.length} isAuth={isAuth} checkAuth={checkAuth}/>
     </div>
-
+    
     <div className="content">
       <Switch>
         <Route exact path="/">
@@ -108,7 +108,7 @@ useEffect(()=>{
           <Menu />
         </Route>
         <Route path="/cart">
-          <Cart removeAll={removeAll}cartItems={cartItems} addToCart={addToCart} removeFromCart= {removeFromCart} />
+          <Cart removeAll={removeAll} cartItems={cartItems} addToCart={addToCart} removeFromCart= {removeFromCart} />
         </Route>
         <Route path="/checkout">
           <Checkout  />
