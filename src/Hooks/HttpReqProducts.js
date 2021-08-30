@@ -2,6 +2,7 @@ import  {useState, useEffect} from "react";
 import axios from 'axios'
 
 export function useAxiosGet(url){
+  
     const [products,setProducts] = useState({
         loading :false,
         data: null,
@@ -16,6 +17,7 @@ export function useAxiosGet(url){
         })
         axios.get(url)
         .then(response => {
+          
           console.log(response.data.['hydra:member'])
           setProducts({
             loading:false,

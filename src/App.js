@@ -1,8 +1,8 @@
 
-import axios from 'axios';
-import React, {useState,useEffect} from "react";
+// import axios from 'axios';
+import React, {useState} from "react";
 import MenuProvider from "react-flexible-sliding-menu";
-import { BrowserRouter as Router, Route, Switch,useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Header from './Components/Header';
 import Cart from './Components/Cart';

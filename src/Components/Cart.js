@@ -7,7 +7,7 @@ function Cart(props) {
 
   const {cartItems,addToCart,removeFromCart,removeAll} = props;
   const itemsPrice = cartItems.reduce((a,c)=> a+c.data.price * c.qty,0);
-  const taxPrice =itemsPrice * 0.21;
+  // const taxPrice =itemsPrice * 0.21;
   
 
 
