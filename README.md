@@ -4,7 +4,6 @@ A vinyl store web/app with login page, secured routes, user page, product demons
 
 ___
 
-<br/>
 
 # <img src="https://cdn-icons-png.flaticon.com/128/4489/4489661.png" width="35">&nbsp; Involved Tech
 
