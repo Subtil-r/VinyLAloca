@@ -18,7 +18,8 @@ ___
 ![](https://img.shields.io/badge/Tools-VSCode-informational?style=flat&logo=visualstudiocode&color=007ACC)
 
 
-![](https://img.shields.io/badge/Framework-React-informational?style=flat&logo=react&color=61DAFB)![](https://img.shields.io/badge/Framework-ReactRouter-informational?style=flat&logo=reactrouter&color=CA4245)
+![](https://img.shields.io/badge/Framework-React-informational?style=flat&logo=react&color=61DAFB)
+![](https://img.shields.io/badge/Framework-ReactRouter-informational?style=flat&logo=reactrouter&color=CA4245)
 
 
 ![](https://img.shields.io/badge/Tool-Node.js-informational?style=flat&logo=node.js&color=339933)
